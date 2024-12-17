@@ -1,7 +1,9 @@
+import ProductListView from './features/products/ProductListView';
+
 const App = () => {
   return (
     <div>
-      App
+     <ProductListView/>
     </div>
   );
 };
