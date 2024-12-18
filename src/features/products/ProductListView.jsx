@@ -1,14 +1,13 @@
 import { useEffect } from "react";
-import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./productSlice";
 
 const productListView = () => {
 
-    const fetchProducts = async()=>{
-        const res= await axios.get('http://localhost:3003/products');
-        console.log(res.data);
-      }
+    const dispatch= useDispatch();
+
        useEffect(()=>{
-      fetchProducts();
+      dispatch(fetchProducts());
         }, []);
 
     return (
