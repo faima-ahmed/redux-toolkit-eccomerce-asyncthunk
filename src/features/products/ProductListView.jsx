@@ -2,19 +2,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "./productSlice";
 
-const productListView = () => {
+const ProductListView = () => {
+  const dispatch = useDispatch();
 
-    const dispatch= useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
-       useEffect(()=>{
-      dispatch(fetchProducts());
-        }, []);
-
-    return (
-        <div>
-            List of products
-        </div>
-    );
+  return <div>List of products</div>;
 };
 
-export default productListView;
+export default ProductListView;

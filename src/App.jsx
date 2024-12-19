@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
-import ProductListView from './features/products/ProductListView';
+import ProductListView from "./features/products/ProductListView";
 
 const App = () => {
   return (
     <div>
-     <ProductListView/>
+      <ProductListView />
     </div>
   );
 };
