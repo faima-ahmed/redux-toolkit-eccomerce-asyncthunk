@@ -30,7 +30,7 @@ export const deleteProducts = createAsyncThunk(
 export const createProducts = createAsyncThunk(
   "products/createProducts",
   async (product) => {
-    const res = await axios.delete(BASE_URL, product);
+    const res = await axios.post(BASE_URL, product);
     console.log(res);
   }
 );
