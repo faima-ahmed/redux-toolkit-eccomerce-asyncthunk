@@ -15,10 +15,24 @@
       "price": 19.99
     },
     {
-      "id": "KKNO9sgXOghyGUL_txVDg",
-      "title": "p",
+      "id": "TAnj8GQOD5r1fniVI8bep",
+      "title": "red Lipstick",
+      "price": "12",
+      "description": "habijabi",
+      "category": "beauty"
+    },
+    {
+      "id": "9hVcX6Wta68A2pwPKlhjB",
+      "title": "nail polish",
       "price": "11",
-      "description": "ffnf",
+      "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+      "category": "beauty"
+    },
+    {
+      "id": "G_d1GpVOQsqSlDVxWkFlI",
+      "title": "6",
+      "price": "23",
+      "description": "habijabi",
       "category": "beauty"
     }
   ]

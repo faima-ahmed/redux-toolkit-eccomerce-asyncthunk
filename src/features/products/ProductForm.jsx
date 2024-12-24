@@ -48,6 +48,7 @@ const dispatch= useDispatch();
         <input name="category" value={product.category} onChange={handleChange} />
       </div>
       <button type="submit">Add Product</button>
+      
     </form>
   );
 };
