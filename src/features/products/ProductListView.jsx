@@ -12,6 +12,10 @@ const ProductListView = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  const handleEdit=(product)=>{
+console.log(product)
+  }
+
   return (
     <div>
       {isLoading && <p>Loading...</p>}
@@ -28,7 +32,7 @@ const ProductListView = () => {
                 <button onClick={() => dispatch(deleteProducts(product.id))}>
                   Delete
                 </button>
-                <button onClick={() => dispatch(updateProducts(product.id))}>
+                <button onClick={()=>handleEdit(product)}>
                   Edit
                 </button>
               </article>

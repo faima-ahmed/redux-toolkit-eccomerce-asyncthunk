@@ -67,6 +67,9 @@ const productSlice = createSlice({
     builder.addCase(createProducts.fulfilled, (state, action) => {
       state.products.push(action.payload);
     });
+    builder.addCase(updateProducts.fulfilled, (state, action) => {
+      
+    });
   },
 });
 
