@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createProducts } from "./productSlice";
 
-const ProductForm = () => {
+const ProductForm = ({productToEdit}) => {
 
 const dispatch= useDispatch();
 
     const [product, setProduct]= useState({
-        title:'',
+        title: productToEdit.title '',
         price:'',
         description:'',
         category:'',
@@ -48,7 +48,7 @@ const dispatch= useDispatch();
         <input name="category" value={product.category} onChange={handleChange} />
       </div>
       <button type="submit">Add Product</button>
-      
+
     </form>
   );
 };

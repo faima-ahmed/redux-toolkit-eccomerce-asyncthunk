@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProducts, fetchProducts, updateProducts } from "./productSlice";
 
-const ProductListView = () => {
+const ProductListView = ({onHandleSetProductToEdit}) => {
   const { products, isLoading, error } = useSelector(
     (state) => state.productsR
   );
@@ -13,8 +15,8 @@ const ProductListView = () => {
   }, [dispatch]);
 
   const handleEdit=(product)=>{
-console.log(product)
-  }
+onHandleSetProductToEdit(product);
+  };
 
   return (
     <div>
