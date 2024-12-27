@@ -42,6 +42,12 @@ const ProductForm = ({ productToEdit = {}, isEdit = false }) => {
    else{
     dispatch(createProducts({ ...product, id: nanoid() }));
    }
+   setProduct({
+    title: "",
+    price: "",
+    description: "",
+    category: "",
+   });
   };
 
 
