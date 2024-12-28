@@ -1,30 +1,50 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 import { nanoid } from "@reduxjs/toolkit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createProducts } from "./productSlice";
+import { createProducts, updateProducts } from "./productSlice";
 
-const ProductForm = ({productToEdit}) => {
+const ProductForm = ({ productToEdit = {}, isEdit = false }) => {
+  const dispatch = useDispatch();
 
-const dispatch= useDispatch();
+  const [product, setProduct] = useState({
+    title: "",
+    price: "",
+    description: "",
+    category: "",
+  });
 
-    const [product, setProduct]= useState({
-        title: productToEdit.title '',
-        price:'',
-        description:'',
-        category:'',
-    });
-
-    const handleChange= (e)=>{
-        setProduct({
-            ...product, [e.target.name]: e.target.value,
-        })
+  useEffect(() => {
+    if (productToEdit) {
+      setProduct({
+        title: productToEdit.title ?? '',
+        price: productToEdit.price ?? '',
+        description: productToEdit.description ?? '',
+        category: productToEdit.category ?? '',
+      });
     }
+  }, [productToEdit]);
+
+  const handleChange = (e) => {
+    setProduct({
+      ...product,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createProducts({...product, id: nanoid()}));
+   if(isEdit){
+    dispatch(updateProducts({id: productToEdit.id, product: product}));
+    isEdit(false);
+   }
+   else{
+    dispatch(createProducts({ ...product, id: nanoid() }));
+   }
   };
+
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -45,10 +65,13 @@ const dispatch= useDispatch();
       </div>
       <div>
         <label>Category</label>
-        <input name="category" value={product.category} onChange={handleChange} />
+        <input
+          name="category"
+          value={product.category}
+          onChange={handleChange}
+        />
       </div>
-      <button type="submit">Add Product</button>
-
+      <button type="submit">{isEdit ? "Update Product" : "Add Product"}</button>
     </form>
   );
 };
