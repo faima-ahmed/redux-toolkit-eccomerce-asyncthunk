@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div>
-      <ProductForm productToEdit={productToEdit} isEdit={isEdit}/>
+      <ProductForm productToEdit={productToEdit} isEdit={isEdit} setIsEdit={setIsEdit}/>
       <ProductListView onHandleSetProductToEdit={handleSetProductToEdit} />
     </div>
   );

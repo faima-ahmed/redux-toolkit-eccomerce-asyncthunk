@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createProducts, updateProducts } from "./productSlice";
 
-const ProductForm = ({ productToEdit = {}, isEdit = false }) => {
+const ProductForm = ({ productToEdit = {}, isEdit = false , setIsEdit}) => {
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState({
@@ -18,10 +18,10 @@ const ProductForm = ({ productToEdit = {}, isEdit = false }) => {
   useEffect(() => {
     if (productToEdit) {
       setProduct({
-        title: productToEdit.title ?? '',
-        price: productToEdit.price ?? '',
-        description: productToEdit.description ?? '',
-        category: productToEdit.category ?? '',
+        title: productToEdit.title ?? "",
+        price: productToEdit.price ?? "",
+        description: productToEdit.description ?? "",
+        category: productToEdit.category ?? "",
       });
     }
   }, [productToEdit]);
@@ -35,21 +35,20 @@ const ProductForm = ({ productToEdit = {}, isEdit = false }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   if(isEdit){
-    dispatch(updateProducts({id: productToEdit.id, product: product}));
-    isEdit(false);
-   }
-   else{
-    dispatch(createProducts({ ...product, id: nanoid() }));
-   }
-   setProduct({
-    title: "",
-    price: "",
-    description: "",
-    category: "",
-   });
+    if (isEdit) {
+      dispatch(updateProducts({ id: productToEdit.id, product: product }));
+     setIsEdit(false);
+      
+    } else {
+      dispatch(createProducts({ ...product, id: nanoid() }));
+    }
+    setProduct({
+      title: "",
+      price: "",
+      description: "",
+      category: "",
+    });
   };
-
 
   return (
     <form onSubmit={handleSubmit}>
