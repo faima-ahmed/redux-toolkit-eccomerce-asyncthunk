@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-constant-binary-expression */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -17,6 +18,23 @@ export const fetchProducts = createAsyncThunk(
     return res.data;
   }
 );
+
+export const deleteProducts = createAsyncThunk(
+  "products/deleteProducts",
+  async (id) => {
+    const res = await axios.delete(`${BASE_URL}/${id}`);
+    return id;
+  }
+);
+
+export const createProducts = createAsyncThunk(
+  "products/createProducts",
+  async (product) => {
+    const res = await axios.delete(BASE_URL, product);
+    console.log(res);
+  }
+);
+
 const productSlice = createSlice({
   name: "products",
   initialState,
@@ -25,14 +43,18 @@ const productSlice = createSlice({
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading = true;
       state.error = null;
-    });
+    })
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload;
       state.isLoading = false;
-    });
+    })
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.isLoading = false;
       state.error = "Failed to fetch data" || action.error.message;
+    })
+    builder.addCase(deleteProducts.fulfilled, (state, action) => {
+      state.products = state.products.filter((product)=>
+      product.id != action.payload);
     });
   },
 });
