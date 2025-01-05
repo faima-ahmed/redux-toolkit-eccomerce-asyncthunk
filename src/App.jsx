@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ProductListView from './features/products/ProductListView';
 
 const App = () => {
