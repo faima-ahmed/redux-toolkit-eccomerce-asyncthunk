@@ -6,7 +6,7 @@ import { deleteProducts, fetchProducts, updateProducts } from "./productSlice";
 
 const ProductListView = ({onHandleSetProductToEdit}) => {
   const { products, isLoading, error } = useSelector(
-    (state) => state.productsR
+    (state) => state.productsR 
   );
   const dispatch = useDispatch();
 
